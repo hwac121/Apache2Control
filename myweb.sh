@@ -109,7 +109,7 @@ select opt in "${options[@]}" ; do
 		clear
 		Splash
 		echo -e " "
-		echo -e "\e[37mThank you for using Apache2 Manager by hwac121\e[0m";
+		echo -e "\e[37mThank you for using Apache2 Manager by Majik Cat Security\e[0m";
 		sleep 3
 		clear
 		menu=1
