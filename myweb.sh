@@ -6,31 +6,31 @@
 
 Splash(){
 echo -e "\e[33m  ____ ____   ____    __ __ __   ___\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m /    |    \ /    |  /  ]  |  | /  _]\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m|  o  |  o  )  o  | /  /|  |  |/  [_\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m|     |   _/|     |/  / |  _  |    _]\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m|  _  |  |  |  _  /   \_|  |  |   [_\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m|  |  |  |  |  |  \     |  |  |     |\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m|__|__|__|_ |__|__|\____|__|__|_____| _\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m   /  ]/   \|    \|      |    \ /   \| |\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m  /  /|     |  _  |      |  D  )     | |\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m /  / |  O  |  |  |_|  |_|    /|  O  | |___\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m/   \_|     |  |  | |  | |    \|     |     |\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m\     |     |  |  | |  | |  .  \     |     |\e[0m";
-sleep 0.1
+sleep 0.05
 echo -e "\e[33m \____|\___/|__|__| |__| |__|\_|\___/|_____|\e[0m";
-sleep 0.1
+sleep 0.05
 echo " "
 }
 
@@ -47,11 +47,12 @@ fi
 #            MAIN MENU
 #=================================
 
-options=("Start Apache2" "Restart Apache2" "Stop Apache2" "Check Status" "Check Errors" "Quit")
-clear
-Splash
+options=("Start Apache2" "Restart Apache2" "Stop Apache2" "Check Status" "Check Port 80" "Kill Process" "Check Errors" "Quit")
+
 PS3='Choose option for Apache2: '
 while [ "$menu" != 1 ]; do
+clear
+Splash
 select opt in "${options[@]}" ; do
 	case $opt in
 	"Start Apache2")
@@ -76,8 +77,23 @@ select opt in "${options[@]}" ; do
 	break
 	;;
 	"Check Status")
-		echo -e "Use q to close results";
+		echo -e "\e[33mUse q to close results\e[0m";
 		service apache2 status
+		clear
+		Splash
+	break
+	;;
+	"Check Port 80")
+		clear
+		Splash
+		netstat -tulpn | grep :80
+		sleep 4
+	break
+	;;
+	"Kill Process")
+		echo -e "Enter PID to kill"
+		read kpid
+		kill $kpid
 		clear
 		Splash
 	break
