@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# TITLE: Apache2Control
+# AUTHOR: Majik Cat Security
+# DATE: July 21, 2019
+# GITHUB: https://github.com/hwac121
+
 #=================================
 #            FUNCTIONS
 #=================================
